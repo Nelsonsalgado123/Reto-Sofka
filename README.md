@@ -1,0 +1,2 @@
+# Reto-Sofka
+Realiza un modelamiento de objetos de forma correcta, aplicando los principios de programación orientado a objetos. Creación de objetos de entidades; ronda, jugador, categoría, premio,pregunta, opciones, etc... La lógica expuesta para el juego cumple con buenas prácticas de programación, donde se evidencia una estructura y sintaxis coherente.  Realiza la persistencia de los resultados obtenidos de los ganadores del juego
