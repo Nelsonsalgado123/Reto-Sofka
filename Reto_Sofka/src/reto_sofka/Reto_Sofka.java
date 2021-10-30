@@ -1,21 +1,76 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package reto_sofka;
+
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author ps
+ * Nelson Livanier Salgado Tejada
  */
 public class Reto_Sofka {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        int option = 0, elemento, Tope;
+        do {
+            try {
+                option = ValidarMenu(
+                        "1. Configurar Juego \n"
+                        + "2. Iniciar el juego \n"
+                        + "3. Ingrese la nota tope\n"
+                        + "4. Mostrar lista de notas totales\n"
+                        + "5. salir \n\n"
+                        + "Que deseas hacer?", "CONCURSO DE PREGUNTAS\n"
+                        + "Y RESPUESTAS", JOptionPane.INFORMATION_MESSAGE);
+                switch (option) {
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                    case 4:
+
+                        break;
+
+                    case 5:
+                        JOptionPane.showMessageDialog(null, "Aplicación finalaizada", "FIN", JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "La Opción no esta en el MENU", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (NumberFormatException n) {
+                JOptionPane.showMessageDialog(null, "Error" + n.getMessage());
+            }
+
+        } while (option != 5);
+
     }
-    
+
+    public static int ValidarMenu(String texto, String texto2, int ent) {
+        int dato = Integer.parseInt((JOptionPane.showInputDialog(null, texto, texto2, ent)));
+        if (dato >= 0 && dato <= 5) {
+            return dato;
+        } else {
+            mensaje("La opcion no se encuentra en el MENU");
+            return ValidarMenu(texto, texto2, ent);
+        }
+    }
+
+    public static int ValidarNota(String texto, String texto2, int ent) {
+        int dato = Integer.parseInt((JOptionPane.showInputDialog(null, texto, texto2, ent)));
+        if (dato >= 0 && dato <= 5) {
+            return dato;
+        } else {
+            mensaje("La nota ingresada no es valida");
+            return ValidarMenu(texto, texto2, ent);
+        }
+    }
+
+    public static void mensaje(String texto) {
+        JOptionPane.showMessageDialog(null, texto);
+    }
+
 }
