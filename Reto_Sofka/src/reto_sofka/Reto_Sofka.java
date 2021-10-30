@@ -16,9 +16,8 @@ public class Reto_Sofka {
                 option = ValidarMenu(
                         "1. Configurar Juego \n"
                         + "2. Iniciar el juego \n"
-                        + "3. Ingrese la nota tope\n"
-                        + "4. Mostrar lista de notas totales\n"
-                        + "5. salir \n\n"
+
+                        + "3. salir \n\n"
                         + "Que deseas hacer?", "CONCURSO DE PREGUNTAS\n"
                         + "Y RESPUESTAS", JOptionPane.INFORMATION_MESSAGE);
                 switch (option) {
@@ -28,12 +27,7 @@ public class Reto_Sofka {
                     case 2:
 
                         break;
-                    case 3:
-
-                        break;
-                    case 4:
-
-                        break;
+                
 
                     case 5:
                         JOptionPane.showMessageDialog(null, "Aplicación finalaizada", "FIN", JOptionPane.INFORMATION_MESSAGE);
@@ -45,7 +39,7 @@ public class Reto_Sofka {
                 JOptionPane.showMessageDialog(null, "Error" + n.getMessage());
             }
 
-        } while (option != 5);
+        } while (option != 3);
 
     }
 
