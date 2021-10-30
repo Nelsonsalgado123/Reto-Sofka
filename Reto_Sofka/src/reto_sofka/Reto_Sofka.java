@@ -16,7 +16,6 @@ public class Reto_Sofka {
                 option = ValidarMenu(
                         "1. Configurar Juego \n"
                         + "2. Iniciar el juego \n"
-
                         + "3. salir \n\n"
                         + "Que deseas hacer?", "CONCURSO DE PREGUNTAS\n"
                         + "Y RESPUESTAS", JOptionPane.INFORMATION_MESSAGE);
@@ -27,7 +26,6 @@ public class Reto_Sofka {
                     case 2:
 
                         break;
-                
 
                     case 5:
                         JOptionPane.showMessageDialog(null, "Aplicación finalaizada", "FIN", JOptionPane.INFORMATION_MESSAGE);
