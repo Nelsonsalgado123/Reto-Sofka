@@ -5,13 +5,18 @@
  */
 package reto_sofka;
 
-
+/**
+ *
+ * Nelson Livanier Salgado
+ */
 public class NodoListaJugadores {
+
     String NombreJugador;
     NodoListaJugadores Siguiente;
-    
-    public NodoListaJugadores (String NombreJugador){
+
+    public NodoListaJugadores(String NombreJugador) {
         this.NombreJugador = NombreJugador;
         Siguiente = this;
     }
+
 }

@@ -7,7 +7,7 @@ package reto_sofka;
 
 /**
  *
- * @author ps
+ * Nelson Livanier Salgado
  */
 public class NodoCodigo {
 

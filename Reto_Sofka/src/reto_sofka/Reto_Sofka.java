@@ -27,9 +27,9 @@ public class Reto_Sofka {
                             try {
                                 option = ValidarMenu(
                                         "1. Ingresa datos del jugador\n\n"
-                                        //+ "2. Ver historico del jugador \n\n"
                                         + "2. Ver historico general \n\n"
-                                        + "3. Anterior \n\n"
+                                        + "3. Buscar jugador \n\n"
+                                        + "4. Anterior \n\n"
                                         + "Que deseas hacer?", "CONCURSO DE PREGUNTAS\n"
                                         + "Y RESPUESTAS", JOptionPane.INFORMATION_MESSAGE);
 
@@ -56,7 +56,19 @@ public class Reto_Sofka {
                                         break;
 
                                     case 3:
-                                        
+                                        if (!IngresarDatos.EstaVacia()) {
+                                            Nombre = LeerCadenaTxt(
+                                                    "Ingresa el Nombre", "Agregando Nombre", JOptionPane.INFORMATION_MESSAGE);
+
+                                            IngresarDatos.BuscarJugador(Nombre);
+
+                                        } else {
+
+                                            JOptionPane.showMessageDialog(null, "Lista vacia", "NO hay Elemento", JOptionPane.INFORMATION_MESSAGE);
+                                        }
+                                        break;
+                                    case 4:
+
                                         break;
                                     default:
                                         JOptionPane.showMessageDialog(null, "La Opción no esta en el MENU", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -267,7 +279,7 @@ public class Reto_Sofka {
                                     + "Seleccione su respuesta", "Nivel Elemental\n",
                                     JOptionPane.QUESTION_MESSAGE);
                             if (opcionA.equalsIgnoreCase("C")) {
-                                mensaje("Repuesta correcta acumulas 100000");
+                                mensaje("Repuesta correcta acumulas 200000");
                                 suma1 = 200000;
                             } else {
                                 mensaje("Respuesta incorrecta Pierdes todo");
@@ -284,7 +296,7 @@ public class Reto_Sofka {
                                     + "Seleccione su respuesta", "Nivel Elemental\n",
                                     JOptionPane.QUESTION_MESSAGE);
                             if (opcionA.equalsIgnoreCase("D")) {
-                                mensaje("Repuesta correcta acumulas 100000");
+                                mensaje("Repuesta correcta acumulas 200000");
                                 suma1 = 200000;
                             } else {
                                 mensaje("Respuesta incorrecta Pierdes todo");
@@ -411,7 +423,7 @@ public class Reto_Sofka {
                                     + "D. Chip  \n\n"
                                     + "Seleccione su respuesta", "Nivel intermedio\n",
                                     JOptionPane.QUESTION_MESSAGE);
-                            if (opcionA.equalsIgnoreCase("B")) {
+                            if (opcionA.equalsIgnoreCase("A")) {
                                 mensaje("Repuesta correcta acumulas 300000");
                                 suma1 = 300000;
                             } else {
@@ -631,8 +643,8 @@ public class Reto_Sofka {
             }
             sumatotal = sumatotal + suma1;
             cont = cont + 1;
-            if (estado == false){
-               sumatotal = 0; 
+            if (estado == false) {
+                sumatotal = 0;
             }
             if (estado != false) {
                 control = JOptionPane.showInputDialog("ACTUALMENTE TIENES UN PREMIO DE " + sumatotal + "\n\n ¿ Deseas continuar    SI  /  NO  ?");
