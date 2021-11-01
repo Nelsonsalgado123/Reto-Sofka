@@ -102,9 +102,12 @@ public class ListaJugadores {
         NodoListaJugadores actual;
         boolean encontrado = false;
         actual = ultimo2;
+        String Cadena = "";
+        
         while (actual.Siguiente != ultimo2 && !encontrado) {
             encontrado = (actual.Siguiente.NombreJugador.equalsIgnoreCase(elemento));
             if (!encontrado) {
+                
                 actual = actual.Siguiente;
             }
         }
@@ -120,6 +123,11 @@ public class ListaJugadores {
                 actual.Siguiente = auxiliar.Siguiente;
             }
             auxiliar = null;
+        }
+        if (encontrado == true) {
+            JOptionPane.showMessageDialog(null, " el jugador  " + elemento + " Fue eliminado ", " Eliminado", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "El elemento  " + elemento + "  no fue Encontrado", " no fue encontrado", JOptionPane.ERROR_MESSAGE);
         }
         return encontrado == true;
     }

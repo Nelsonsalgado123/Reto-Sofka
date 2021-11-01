@@ -29,6 +29,7 @@ public class Reto_Sofka {
                                         "1. Ingresa datos del jugador\n\n"
                                         + "2. Ver historico general \n\n"
                                         + "3. Buscar jugador \n\n"
+                                        + "4. Eliminar Juagador \n\n"
                                         + "4. Anterior \n\n"
                                         + "Que deseas hacer?", "CONCURSO DE PREGUNTAS\n"
                                         + "Y RESPUESTAS", JOptionPane.INFORMATION_MESSAGE);
@@ -68,7 +69,19 @@ public class Reto_Sofka {
                                         }
                                         break;
                                     case 4:
+                                        if (!IngresarDatos.EstaVacia()) {
+                                            Nombre = LeerCadenaTxt(
+                                                    "Ingresa el Nombre", "Agregando Nombre", JOptionPane.INFORMATION_MESSAGE);
 
+                                            IngresarDatos.EliminarNombre(Nombre);
+
+                                        } else {
+
+                                            JOptionPane.showMessageDialog(null, "Lista vacia", "NO hay Elemento", JOptionPane.INFORMATION_MESSAGE);
+                                        }
+                                        break;
+                                        case 5:
+                                        
                                         break;
                                     default:
                                         JOptionPane.showMessageDialog(null, "La Opción no esta en el MENU", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -77,7 +90,7 @@ public class Reto_Sofka {
                                 JOptionPane.showMessageDialog(null, "Error" + n.getMessage());
                             }
 
-                        } while (option != 3);
+                        } while (option != 5);
 
                         break;
                     case 2:
