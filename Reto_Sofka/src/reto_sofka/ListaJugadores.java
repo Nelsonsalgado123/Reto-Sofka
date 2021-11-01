@@ -125,9 +125,9 @@ public class ListaJugadores {
             auxiliar = null;
         }
         if (encontrado == true) {
-            JOptionPane.showMessageDialog(null, " el jugador  " + elemento + " Fue eliminado ", " Eliminado", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El jugador  " + elemento + " Fue eliminado ", "Eliminando jugador ", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "El elemento  " + elemento + "  no fue Encontrado", " no fue encontrado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "" + elemento + "  no fue Encontrado", "No encontrado", JOptionPane.ERROR_MESSAGE);
         }
         return encontrado == true;
     }

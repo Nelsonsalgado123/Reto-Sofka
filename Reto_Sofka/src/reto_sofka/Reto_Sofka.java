@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
  */
 public class Reto_Sofka {
 
+    //Menu de opciones
     public static void main(String[] args) throws IOException {
         ListaJugadores IngresarDatos = new ListaJugadores();
         int option = 0, Codigo = 0, premio = 0;
@@ -25,14 +26,14 @@ public class Reto_Sofka {
                     case 1:
                         do {
                             try {
-                                option = ValidarMenu(
+                                option = ValidarMenu2(
                                         "1. Ingresa datos del jugador\n\n"
                                         + "2. Ver historico general \n\n"
                                         + "3. Buscar jugador \n\n"
-                                        + "4. Eliminar Juagador \n\n"
-                                        + "4. Anterior \n\n"
-                                        + "Que deseas hacer?", "CONCURSO DE PREGUNTAS\n"
-                                        + "Y RESPUESTAS", JOptionPane.INFORMATION_MESSAGE);
+                                        + "4. Eliminar juagador \n\n"
+                                        + "5. Anterior \n\n"
+                                        + "¿ Que deseas hacer ? ", "Menu de opciones\n",
+                                        JOptionPane.INFORMATION_MESSAGE);
 
                                 switch (option) {
                                     case 1:
@@ -80,8 +81,8 @@ public class Reto_Sofka {
                                             JOptionPane.showMessageDialog(null, "Lista vacia", "NO hay Elemento", JOptionPane.INFORMATION_MESSAGE);
                                         }
                                         break;
-                                        case 5:
-                                        
+                                    case 5:
+
                                         break;
                                     default:
                                         JOptionPane.showMessageDialog(null, "La Opción no esta en el MENU", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -111,7 +112,19 @@ public class Reto_Sofka {
 
     }
 
+    //Validamos que el dato ingresado sea un numero entero y este en el rango del menu
     public static int ValidarMenu(String texto, String texto2, int ent) {
+        int dato = Integer.parseInt((JOptionPane.showInputDialog(null, texto, texto2, ent)));
+        if (dato >= 0 && dato <= 2) {
+            return dato;
+        } else {
+            mensaje("La opcion no se encuentra en el MENU");
+            return ValidarMenu(texto, texto2, ent);
+        }
+    }
+
+    //Validamos que el dato ingresado sea un numero entero y este en el rango del menu
+    public static int ValidarMenu2(String texto, String texto2, int ent) {
         int dato = Integer.parseInt((JOptionPane.showInputDialog(null, texto, texto2, ent)));
         if (dato >= 0 && dato <= 5) {
             return dato;
@@ -121,6 +134,7 @@ public class Reto_Sofka {
         }
     }
 
+    //Validamos que el dato ingresado sea una letra (a, b, c, d)
     public static String ValidarPregunta(String texto, String texto2, int ent) {
         String dato = JOptionPane.showInputDialog(null, texto, texto2, ent);
         if (dato.equalsIgnoreCase("A") || dato.equalsIgnoreCase("B") || dato.equalsIgnoreCase("C") || dato.equalsIgnoreCase("D")) {
@@ -130,16 +144,7 @@ public class Reto_Sofka {
             return ValidarPregunta(texto, texto2, ent);
         }
     }
-
-    public static int ValidarNota(String texto, String texto2, int ent) {
-        int dato = Integer.parseInt((JOptionPane.showInputDialog(null, texto, texto2, ent)));
-        if (dato >= 0 && dato <= 5) {
-            return dato;
-        } else {
-            mensaje("El Nodo ingresado no es valida");
-            return ValidarNota(texto, texto2, ent);
-        }
-    }
+    //Validamos que el dato ingresado sea un numero entero positivo
 
     public static int ValidarEntero(String texto, String texto2, int ent) {
         int dato = Integer.parseInt((JOptionPane.showInputDialog(null, texto, texto2, ent)));
@@ -151,10 +156,12 @@ public class Reto_Sofka {
         }
     }
 
+    //mostrasmos un mensaje con JOptionPane
     public static void mensaje(String texto) {
         JOptionPane.showMessageDialog(null, texto);
     }
 
+    //con este ingresamos solo Cadenas de testo si numeros
     public static String LeerCadenaTxt(String texto, String texto2, int ent) {
         String dato = JOptionPane.showInputDialog(null, texto, texto2, ent);
 
@@ -170,25 +177,32 @@ public class Reto_Sofka {
         return dato;
     }
 
+    //Seleccionamos de forma aleatori cada una de las preguntas
     public static int SeleccionPregunta(int resu) throws IOException {
         int[] letra = new int[1];
         String opcionA = "";
-        boolean estado = true;
+        boolean estado = true, Ganador = false;
 
         String control = "si";
         int suma1 = 0, sumatotal = 0, cont = 0;
         cont = 1;
+        //Mientras la varianble control sea "si" y el estado sea verdadero se ejecutara el codigo
         while (control.equalsIgnoreCase("si") && estado == true) {
-
+            //letra.length actua como bandera 
             for (int j = 0; j < letra.length; j++) {
-
+                //Math.random() no elige una opcion aleatoria entre 1 y 5
                 letra[j] = (int) (Math.random() * 5 + 1);
 
             }
             if (cont == 1) {
                 for (int j = 0; j < letra.length; j++) {
+
+                    /*switch permite elejir una de las 5 preguntas
+                      de forma aleatoria con la bandera (j) cargada
+                      con el dato que aleatoriamente le dio Math.random()*/
                     switch (letra[j]) {
                         case 1:
+                            //ingresamos la opccion deseada y la controlamos con ValidarPregunta()
                             opcionA = ValidarPregunta(
                                     " Las caries dan en....\n\n\n\n"
                                     + "A. Los ojos \n\n"
@@ -197,6 +211,7 @@ public class Reto_Sofka {
                                     + "D. El cuello  \n\n"
                                     + "Seleccione su respuesta", "Nivel Basico\n",
                                     JOptionPane.QUESTION_MESSAGE);
+                            //comparamos si la opcion es correcta
                             if (opcionA.equalsIgnoreCase("B")) {
                                 mensaje("Repuesta correcta acumulas 100000");
                                 suma1 = 100000;
@@ -278,7 +293,7 @@ public class Reto_Sofka {
                     }
                 }
             }
-
+            //si desea continuar aumentamos la variable de control y el nivel sube al 2 (Nivel Elemental)
             if (cont == 2) {
                 for (int j = 0; j < letra.length; j++) {
                     switch (letra[j]) {
@@ -372,7 +387,7 @@ public class Reto_Sofka {
                     }
                 }
             }
-
+            //si desea continuar aumentamos la variable de control y el nivel sube al 3 (Nivel intermedio)
             if (cont == 3) {
                 for (int j = 0; j < letra.length; j++) {
                     switch (letra[j]) {
@@ -429,14 +444,14 @@ public class Reto_Sofka {
                             break;
                         case 4:
                             opcionA = ValidarPregunta(
-                                    " ¿Como se llama la parte del reloj que marca la hora?....\n\n\n\n"
-                                    + "A. Manecilla \n\n"
-                                    + "B. Mica \n\n"
-                                    + "C. Correa \n\n"
-                                    + "D. Chip  \n\n"
+                                    " ¿En qué año el ser humano llegó al espacio?\n\n\n\n"
+                                    + "A. 1800 \n\n"
+                                    + "B. 1961 \n\n"
+                                    + "C. 1965 \n\n"
+                                    + "D. 2001 \n\n"
                                     + "Seleccione su respuesta", "Nivel intermedio\n",
                                     JOptionPane.QUESTION_MESSAGE);
-                            if (opcionA.equalsIgnoreCase("A")) {
+                            if (opcionA.equalsIgnoreCase("B")) {
                                 mensaje("Repuesta correcta acumulas 300000");
                                 suma1 = 300000;
                             } else {
@@ -466,7 +481,7 @@ public class Reto_Sofka {
                     }
                 }
             }
-
+            //si desea continuar aumentamos la variable de control y el nivel sube al 4 (Nivel Intermedio - Alto)
             if (cont == 4) {
                 for (int j = 0; j < letra.length; j++) {
                     switch (letra[j]) {
@@ -492,11 +507,11 @@ public class Reto_Sofka {
                                     "  ¿Cuál fue la primera civilización humana?\n\n\n\n"
                                     + "A. Antigua Mesopotamia \n\n"
                                     + "B. Civilización sumeria. \n\n"
-                                    + "C. Las manos \n\n"
+                                    + "C. Acadia \n\n"
                                     + "D. Civilización babilónica  \n\n"
                                     + "Seleccione su respuesta", "Nivel Intermedio - Alto\n",
                                     JOptionPane.QUESTION_MESSAGE);
-                            if (opcionA.equalsIgnoreCase("C")) {
+                            if (opcionA.equalsIgnoreCase("B")) {
                                 mensaje("Repuesta correcta acumulas 400000");
                                 suma1 = 400000;
                             } else {
@@ -560,7 +575,7 @@ public class Reto_Sofka {
                     }
                 }
             }
-
+            //si desea continuar aumentamos la variable de control y el nivel sube al 5 (Alto)
             if (cont == 5) {
                 for (int j = 0; j < letra.length; j++) {
                     switch (letra[j]) {
@@ -576,6 +591,7 @@ public class Reto_Sofka {
                             if (opcionA.equalsIgnoreCase("B")) {
                                 mensaje("Repuesta correcta acumulas 500000");
                                 suma1 = 500000;
+                                Ganador = true;
                             } else {
                                 mensaje("Respuesta incorrecta Pierdes todo");
                                 estado = false;
@@ -593,6 +609,7 @@ public class Reto_Sofka {
                             if (opcionA.equalsIgnoreCase("D")) {
                                 mensaje("Repuesta correcta acumulas 500000");
                                 suma1 = 500000;
+                                Ganador = true;
                             } else {
                                 mensaje("Respuesta incorrecta Pierdes todo");
                                 estado = false;
@@ -610,6 +627,7 @@ public class Reto_Sofka {
                             if (opcionA.equalsIgnoreCase("D")) {
                                 mensaje("Repuesta correcta acumulas 500000");
                                 suma1 = 500000;
+                                Ganador = true;
                             } else {
                                 mensaje("Respuesta incorrecta Pierdes todo");
                                 estado = false;
@@ -627,6 +645,7 @@ public class Reto_Sofka {
                             if (opcionA.equalsIgnoreCase("B")) {
                                 mensaje("Repuesta correcta acumulas 500000");
                                 suma1 = 500000;
+                                Ganador = true;
                             } else {
                                 mensaje("Respuesta incorrecta Pierdes todo");
                                 estado = false;
@@ -644,6 +663,7 @@ public class Reto_Sofka {
                             if (opcionA.equalsIgnoreCase("D")) {
                                 mensaje("Repuesta correcta acumulas 500000");
                                 suma1 = 500000;
+                                Ganador = true;
                             } else {
                                 mensaje("Respuesta incorrecta Pierdes todo");
                                 estado = false;
@@ -651,14 +671,21 @@ public class Reto_Sofka {
                             break;
                         default:
                             break;
+
                     }
+
                 }
             }
+           
             sumatotal = sumatotal + suma1;
             cont = cont + 1;
             if (estado == false) {
                 sumatotal = 0;
             }
+             if (Ganador == true) {
+                mensaje("Felicidades has superado todos los niveles tu premio acumulado es de " + sumatotal);
+                estado = false;
+             }
             if (estado != false) {
                 control = JOptionPane.showInputDialog("ACTUALMENTE TIENES UN PREMIO DE " + sumatotal + "\n\n ¿ Deseas continuar    SI  /  NO  ?");
 
