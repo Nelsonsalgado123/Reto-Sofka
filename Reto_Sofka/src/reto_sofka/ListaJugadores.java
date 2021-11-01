@@ -24,14 +24,16 @@ public class ListaJugadores {
         return ultimo == null;
 
     }
-    //metodo para insertar Nodo
-
+    //metodo para insertar el nombre, la posicion, y los premios
     public ListaJugadores insertar(String Nombre, int Posicion, int Premios) {
-
+        
+        
+        //Instanciomos variables de tipo Nodo
         NodoListaJugadores nuevo1 = new NodoListaJugadores(Nombre);
         NodoCodigo nuevo = new NodoCodigo(Posicion);
         NodoPremios nuevo2 = new NodoPremios(Premios);
-
+        
+        //si lo elementos son diferente de nul ejecuta el codigo
         if (ultimo2 != null && ultimo != null && ultimo3 != null) {
             nuevo1.Siguiente = ultimo2.Siguiente;
             ultimo2.Siguiente = nuevo1;
@@ -48,7 +50,6 @@ public class ListaJugadores {
         ultimo3 = nuevo2;
         return this;
     }
-
     //metodo para mostrar la lista
     public void MostrarLista() {
 
@@ -69,35 +70,7 @@ public class ListaJugadores {
         } while (puntero != ultimo.siguiente && puntero2 != ultimo2.Siguiente && puntero3 != ultimo3.siguiente1);
             JOptionPane.showMessageDialog(null, "Ingreso      Nombre                                        Premio\n\n\n" + Cadena + "  ", " HISTORIAL", JOptionPane.INFORMATION_MESSAGE);
     }
-
     //Metodo para eliminar un nodo de la lista circular
-    public boolean Eliminar(int elemento) {
-        NodoCodigo actual;
-        boolean encontrado = false;
-        actual = ultimo;
-        while (actual.siguiente != ultimo && !encontrado) {
-            encontrado = (actual.siguiente.dato == elemento);
-            if (!encontrado) {
-                actual = actual.siguiente;
-            }
-        }
-        encontrado = (actual.siguiente.dato == elemento);
-        if (encontrado) {
-            NodoCodigo auxiliar = actual.siguiente;
-            if (ultimo == ultimo.siguiente) {
-                ultimo = null;
-            } else {
-                if (auxiliar == ultimo) {
-                    ultimo = actual;
-                }
-                actual.siguiente = auxiliar.siguiente;
-            }
-            auxiliar = null;
-        }
-        return encontrado == true;
-    }
-    //Metodo para eliminar un nodo de la lista circular
-
     public boolean EliminarNombre(String elemento) {
         NodoListaJugadores actual;
         boolean encontrado = false;
@@ -130,8 +103,8 @@ public class ListaJugadores {
             JOptionPane.showMessageDialog(null, "" + elemento + "  no fue Encontrado", "No encontrado", JOptionPane.ERROR_MESSAGE);
         }
         return encontrado == true;
-    }
-
+    } 
+    //Metodo para busar el jugador por el nombre
     public void BuscarJugador(String Juagador) {
         NodoListaJugadores puntero2;
         NodoCodigo puntero;

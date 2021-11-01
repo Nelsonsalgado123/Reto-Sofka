@@ -9,6 +9,7 @@ package reto_sofka;
  *
  * Nelson Livanier Salgado
  */
+//creamos un nodo circular simple para ingresar datos de tipo entero
 public class NodoPremios {
 
     int Premio;

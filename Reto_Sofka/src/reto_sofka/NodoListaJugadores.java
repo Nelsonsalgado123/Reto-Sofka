@@ -9,6 +9,7 @@ package reto_sofka;
  *
  * Nelson Livanier Salgado
  */
+//creamos un nodo circular simple para ingresar datos de tipo String
 public class NodoListaJugadores {
 
     String NombreJugador;
